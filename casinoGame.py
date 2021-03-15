@@ -1,25 +1,32 @@
-# my casino game will involve a standard deck of 52 card
-# you may guess the COLOR for $5
-# you may guess the SUIT for $3
-# you may guess the NUMBER/FACE for $1
-
-# I need a function that determines how much money they put in the pot,
-    # which will determine if their guess will be a color, suit, or number
-    # we will then also need to subratct that amount from our players wallet
-
-# I need a function that will take in and keep track of our users guess
-
 from numpy import random
 
-guessByColor = {
-  "red cards" : 26,
-  "black cards" : 26,
-}
+
 list_of_nos = ["no","no thank you", "I'm alright", "I'll pass", "nah", "nope", "not gonna happen", "never", "pass", "not today", "I can't", "no way", "not a chance", "I'd rather not"]
 
+def ourGame(bet) :
+  guessByColor = {
+    "red cards" : 26,
+    "black cards" : 26,
+  }
+
+  if bet == '5' :
+    house_card = random.choice(guessByColor.keys())
+    print (house_card)
+  else :
+    print ("oh rats")
+
+def placeBet (user_wallet) :
+  user_bet = input ("How much would you like to bet?\n It is ...\n $5 to guess the color.\n $3 to guess the suit.\n $1 to guess the number or face.\n")
+
+  ourGame(user_bet)
+  
+  
 def getWallet (moneyCap) :
   user_wallet = random.randint(moneyCap)
-  print(f'How about we start you off with ${user_wallet} for now then.')
+  print(f'How about we start you off with ${user_wallet} in your stack for now then.')
+  
+  placeBet(user_wallet)
+      
 
 def letsPlayAGame (question) :
   user_answer = input(question).lower()
